@@ -1,0 +1,78 @@
+#ifndef PACKAGE_H
+#define PACKAGE_H
+
+using namespace std;
+
+class Package
+{
+
+	public:
+        string client_name;
+		string client_address;
+		string client_city;
+        string client_state;
+        string client_zip;
+            
+        string recipient_name;
+        string recipient_address;
+        string recipient_city;
+        string recipient_state;
+        string recipient_zip;
+		
+		float weight;
+		float rate;
+
+ 
+		Package(string c_name, string c_address, string c_city, string c_state, string c_zip,
+                string r_name, string r_address, string r_city, string r_state, string r_zip,  
+                float w, float r) {
+		
+		
+        client_name = c_name;
+		client_address = c_address;
+		client_city = c_city;
+        client_state = c_state;
+        client_zip = c_zip;
+            
+        recipient_name = r_name;
+        recipient_address = r_address;
+        recipient_city = r_city;
+        recipient_state = r_state;
+        recipient_zip = r_zip;
+
+		if(w > 0) { weight = w; }
+	        else { weight = 0;  }
+	
+	    if(r > 0) { rate = r; 	}
+ 	        else { rate = 0; 	}
+		}
+       
+        
+    virtual float calculatecost()
+    {
+	    return weight * rate;
+    }
+    void printout() 
+    {
+        cout << "--------------------------------------------" << endl;
+        cout << "Sender:" << endl;
+        cout << "Name: " << client_name << endl;
+        cout << "Address: " << client_address << endl;
+        cout << "City: " << client_city << endl;
+        cout << "State: " << client_state << endl;
+        cout << "ZIP: " << client_zip << endl;
+        cout << endl;
+        cout << "Recepient:" << endl;
+        cout << "Name: " << recipient_name << endl;
+        cout << "Address: " << recipient_address << endl;
+        cout << "City: " << recipient_city << endl;
+        cout << "State: " << recipient_state << endl;
+        cout << "ZIP: " << recipient_zip << endl;
+    }
+    
+    string getname() {
+        return client_name;
+    }
+
+};
+#endif

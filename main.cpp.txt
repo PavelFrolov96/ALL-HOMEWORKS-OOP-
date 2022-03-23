@@ -1,0 +1,55 @@
+#include <iostream>
+#include <vector>
+#include "Package.h"
+#include "TwoDayPackage.h"
+#include "OvernightPackage.h"
+
+using namespace std;
+
+
+int main()
+{
+
+    Package pac_1 {
+        "Pavels Frolovs1", "Maskavas street 7", "Salaspils", "Latvia county", "LV 2121",
+        "Olga Frolova1", "Maskavas street 7", "Salaspils", "Latvia county", "LV 2121", 
+        -10, 100};
+
+    TwoDayPackage pac_2 {
+        "Pavels Frolovs2", "Maskavas street 9", "Salaspils", "Latvia county", "LV 2121",
+        "Olga Frolova2", "Maskavas street 9", "Salaspils", "Latvia county", "LV 2121", 
+        29.95, 100, 200};
+
+    OvernightPackage pac_3 {
+        "Pavels Frolovs3", "Maskavas street 8", "Salaspils", "Latvia county", "LV 2121",
+        "Olga Frolova3", "Maskavas street 8", "Salaspils", "Latvia county", "LV 2121", 
+        39.95, 1, 1};
+
+
+
+float TotalPriceAllPackages = 0;
+
+
+vector<Package*> items{ &pac_1, &pac_2, &pac_3 };
+
+vector<float> pricetags;
+
+
+    for (int i = 0; i < items.size(); i++)
+    { 
+        (*items[i]).printout();
+        TotalPriceAllPackages += (*items[i]).calculatecost();
+        pricetags.push_back((*items[i]).calculatecost());
+
+    }
+    
+    cout << "--------------------------------------------" << endl;
+    cout << "For each separately: " << endl;
+
+    for (int i = 0; i < items.size(); i++)
+    {
+        cout << (*items[i]).getname() << ": " << pricetags[i] << " €"<< endl;
+    }
+    cout << "--------------------------------------------" << endl;
+    cout << "Total amound for all packages: " << TotalPriceAllPackages << " €"<< endl;
+}

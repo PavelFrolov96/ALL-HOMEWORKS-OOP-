@@ -1,0 +1,45 @@
+#ifndef TWODAYPACKAGE_H
+#define TWODAYPACKAGE_H
+
+#include "Package.h"
+
+using namespace std;
+
+class TwoDayPackage : public Package
+{
+	
+	public: 
+	
+	    float free;
+		
+		TwoDayPackage(
+		  string c_name, 
+		  string c_address, 
+		  string c_city,
+          string c_state,
+          string c_zip,
+            
+          string r_name,
+          string r_address,
+          string r_city,
+          string r_state,
+          string r_zip,  
+                
+            float w, float r,
+            float f) :  
+		Package{
+		c_name, c_address, c_city, c_state, c_zip,
+		r_name, r_address, r_city, r_state, r_zip, w, r} 
+           
+            {
+		    free = f;
+            }
+        
+		
+    float calculatecost() override
+    {
+	    return (Package::calculatecost() + free);
+    }
+};
+
+#endif
